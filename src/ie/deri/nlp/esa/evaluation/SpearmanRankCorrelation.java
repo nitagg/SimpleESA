@@ -22,21 +22,6 @@ public class SpearmanRankCorrelation {
 		correlation = new SpearmansCorrelation();
 	}
 
-	public double calculateKORECorrelation(String goldStandardFilePath, int GSFileRowNo, String testFilePath, int testFileRowNo ) {
-
-		double[] GS_Scores = this.textToArray(goldStandardFilePath, GSFileRowNo);
-		double[] results_Scores = this.textToArray(testFilePath, testFileRowNo);
-		
-		double cor_Score = 0.0;
-		
-		for(int count = 1; count < 22; count++)
-			cor_Score = cor_Score + correlation.correlation(Arrays.copyOfRange(GS_Scores, (count-1)*20, count*20 -1), Arrays.copyOfRange(results_Scores, (count-1)*20, count*20 -1));
-		
-		double d = cor_Score / 21.0;
-
-		return d;
-	}
-
 	private double[] textToArray(String filePath, int rowNo){
 		
 		BufferedReader reader = BasicFileTools.getBufferedReaderFile(filePath);
